@@ -3,7 +3,7 @@ import aio_pika
 from aio_pika import IncomingMessage
 from typing import Callable, Awaitable
 
-rabbit_url = "amqp://guest:guest@rabbitmq:5672/"
+rabbit_url = "amqp://guest:guest@localhost:5672/"
 
 
 class RabbitConsumer:
@@ -36,4 +36,4 @@ class RabbitConsumer:
             await self.connection.close()
 
 
-rabbit_consumer = RabbitConsumer(rabbit_url, "new_user")
+rabbit_consumer = RabbitConsumer(rabbit_url)
