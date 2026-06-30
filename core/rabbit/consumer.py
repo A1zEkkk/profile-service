@@ -2,8 +2,7 @@ import json
 import aio_pika
 from aio_pika import IncomingMessage
 from typing import Callable, Awaitable
-
-rabbit_url = "amqp://guest:guest@localhost:5672/"
+from core.config import get_settings
 
 
 class RabbitConsumer:
@@ -35,5 +34,5 @@ class RabbitConsumer:
         if self.connection and not self.connection.is_closed:
             await self.connection.close()
 
-
-rabbit_consumer = RabbitConsumer(rabbit_url)
+settings = get_settings()
+rabbit_consumer = RabbitConsumer(settings.rabbit_url)
